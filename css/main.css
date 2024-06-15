@@ -68,7 +68,7 @@ body {
 .titulo {
   margin-bottom: 180px;
   font-family: "Arial Narrow", Arial, sans-serif;
-  color: yellow;
+  color: floralwhite;
   position: absolute;
   font-weight: bold;
   letter-spacing: 6px;
@@ -1504,13 +1504,29 @@ h1 {
 .modal-content {
   margin: 15% auto;
   margin-top: 10%;
-  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 video {
-  width: 100%;
+  width: 700px;
+  height: 500px;
 }
 
+.anuncio {
+  color: black;
+  background: white;
+  height: 250px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 700;
+  padding: 100px;
+  border-radius: 20px;
+}
 #video1,
 #video2,
 #video3,

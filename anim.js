@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("modal");
   const modalVideo = document.getElementById("modalVideo");
+  const modalAnuncio = document.getElementById("modalAnuncio");
   const closeModal = document.getElementById("close");
   const audio = document.querySelector("audio");
   const lyrics = document.querySelector("#lyrics");
@@ -52,14 +53,30 @@ document.addEventListener("DOMContentLoaded", function () {
     clearInterval(lyricsInterval);
   }
 
-  // Function to open modal with the video
+  // Function to open modal with the video or announcement
   function openModal(videoId) {
-    const videoSource = `videos/${videoId}.mp4`;
-    modalVideo.src = videoSource;
+    if (videoId === "video4" || videoId === "video5" || videoId === "video6") {
+      modalVideo.style.display = "none";
+      modalAnuncio.style.display = "block";
+    } else {
+      const videoSource = `videos/${videoId}.mp4`;
+      modalVideo.src = videoSource;
+      modalVideo.style.display = "block";
+      modalAnuncio.style.display = "none";
+      modalVideo.play(); // Start playing the video
+    }
     modal.style.display = "block";
-    modalVideo.play(); // Start playing the video
     audio.pause();
     stopLyrics();
+  }
+
+  function closeModalFunction() {
+    modal.style.display = "none";
+    modalVideo.pause();
+    modalVideo.src = "";
+    modalAnuncio.style.display = "none"; // Hide the announcement text
+    audio.play();
+    startLyrics();
   }
 
   for (let i = 1; i <= 9; i++) {
@@ -69,21 +86,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  closeModal.addEventListener("click", function () {
-    modal.style.display = "none";
-    modalVideo.pause();
-    modalVideo.src = "";
-    audio.play();
-    startLyrics();
-  });
+  closeModal.addEventListener("click", closeModalFunction);
 
   window.addEventListener("click", function (event) {
     if (event.target == modal) {
-      modal.style.display = "none";
-      modalVideo.pause();
-      modalVideo.src = "";
-      audio.play();
-      startLyrics();
+      closeModalFunction();
+    }
+  });
+
+  window.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      closeModalFunction();
+    } else if (event.key.toLowerCase() === "f") {
+      if (modalVideo.requestFullscreen) {
+        modalVideo.requestFullscreen();
+      } else if (modalVideo.mozRequestFullScreen) {
+        // Firefox
+        modalVideo.mozRequestFullScreen();
+      } else if (modalVideo.webkitRequestFullscreen) {
+        // Chrome, Safari and Opera
+        modalVideo.webkitRequestFullscreen();
+      } else if (modalVideo.msRequestFullscreen) {
+        // IE/Edge
+        modalVideo.msRequestFullscreen();
+      }
     }
   });
 

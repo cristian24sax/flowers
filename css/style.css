@@ -35,7 +35,17 @@ body {
 .botones a:focus {
   background-color: rgb(50, 194, 194);
 }
-
+.credits {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 10px;
+}
+.credits .esc {
+  color: yellow;
+}
+.keyF {
+  color: orange;
+}
 .greetings {
   font-size: 7rem;
   font-weight: 900;
