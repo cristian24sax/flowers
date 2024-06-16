@@ -66,7 +66,7 @@ body {
   opacity: 1; /* Hacer aparecer la imagen al hacer hover */
 }
 .titulo {
-  margin-bottom: 180px;
+  margin-bottom: 150px;
   font-family: "Arial Narrow", Arial, sans-serif;
   color: floralwhite;
   position: absolute;
@@ -75,6 +75,7 @@ body {
   opacity: 0;
   animation: fadeIn 3s ease-in-out forwards;
   text-align: center;
+  font-size:26px;
   z-index: 1;
 }
 @keyframes fadeIn {
