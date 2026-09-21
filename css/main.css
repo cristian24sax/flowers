@@ -1539,3 +1539,65 @@ video {
 #video9 {
   cursor: pointer;
 }
+
+html {
+  min-height: 100%;
+}
+
+body.container,
+body {
+  width: 100%;
+  min-height: 100svh;
+  background-color: var(--dark-color);
+  overflow: hidden;
+}
+
+.container {
+  max-width: none;
+  padding: 0;
+}
+
+.titulo {
+  width: min(90vw, 900px);
+  margin-bottom: min(18vh, 180px);
+  font-size: 1.75rem;
+  line-height: 1.4;
+  letter-spacing: 2px;
+}
+
+#lyrics {
+  width: min(90vw, 900px);
+  margin: 0;
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .titulo {
+    width: calc(100vw - 32px);
+    margin-bottom: 48vh;
+    font-size: 1rem;
+    line-height: 1.45;
+    letter-spacing: 1px;
+  }
+
+  #lyrics {
+    top: 20px;
+    width: calc(100vw - 24px);
+    font-size: 0.875rem;
+    line-height: 1.4;
+    letter-spacing: 1px;
+  }
+
+  .flowers {
+    margin-bottom: 0;
+    transform: translateY(-10vh) scale(0.65);
+    transform-origin: bottom center;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .flowers {
+    transform: scale(0.78);
+    transform-origin: bottom center;
+  }
+}
